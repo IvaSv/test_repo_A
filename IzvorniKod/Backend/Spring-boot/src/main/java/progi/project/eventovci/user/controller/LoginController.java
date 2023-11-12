@@ -34,9 +34,10 @@ public class LoginController {
 
     @Autowired
     PasswordEncoder passwordEncoder;
-
+    
     @PostMapping()
-    public void admins(){
+    public ResponseEntity<String> login(@RequestBody LoginForm loginform) {
+
         User user = new User("admin", "sample@example.com", passwordEncoder.encode("password"), "administrator", "Sample Address", false);
         User user2 = userRepository.findUserByUsername("admin");
         if(user2 != null) {
@@ -45,10 +46,6 @@ public class LoginController {
         else{
             userRepository.save(user);
         }
-    }
-    
-    @PostMapping()
-    public ResponseEntity<String> login(@RequestBody LoginForm loginform) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginform.getUsername(), loginform.getPassword()));
