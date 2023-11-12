@@ -73,8 +73,13 @@ public class WebSecurity  {
         return http.build();
     }
 
+    @Autowired
+    private AuthenticationConfiguration authenticationConfiguration;
+    
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+    AuthenticationManager configProviders(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder.authenticationProvider(usernamePasswordAuthenticationProvider());
+        authenticationManagerBuilder.authenticationProvider(smsAuthenticationProvider());
         return authenticationConfiguration.getAuthenticationManager();
     }
 
