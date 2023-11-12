@@ -43,7 +43,14 @@ public class UserService {
 
 
     public User login(String username) {
-
+        User user = new User("admin", "sample@example.com", passwordEncoder.encode("password"), "administrator", "Sample Address", false);
+        User user2 = userRepository.findUserByUsername("admin");
+        if(user2 != null) {
+            
+        }
+        else{
+            userRepository.save(user);
+        }
         return userRepository.findUserByUsername(username);
 
     }
