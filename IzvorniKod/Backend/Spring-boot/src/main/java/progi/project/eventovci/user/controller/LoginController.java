@@ -38,15 +38,6 @@ public class LoginController {
     @PostMapping()
     public ResponseEntity<String> login(@RequestBody LoginForm loginform) {
 
-        User user = new User("admin", "sample@example.com", passwordEncoder.encode("password"), "administrator", "Sample Address", false);
-        User user2 = userRepository.findUserByUsername("admin");
-        if(user2 != null) {
-            
-        }
-        else{
-            userRepository.save(user);
-        }
-
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginform.getUsername(), loginform.getPassword()));
 
