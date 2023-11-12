@@ -12,7 +12,7 @@ const MyAccount = () => {
 
   useEffect(() => {
     if (accessToken !== null) {
-      fetch('/Test/data', {
+      fetch('/api/data', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

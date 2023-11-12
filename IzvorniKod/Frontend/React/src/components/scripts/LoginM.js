@@ -77,7 +77,7 @@ const LoginM = ({ getType }) => {
     alrt.style.visibility = "hidden";
     const podatci = { username, password };
     // console.log(JSON.stringify(podatci));
-    fetch("/Test/login", {
+    fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(podatci),
@@ -131,7 +131,7 @@ const LoginM = ({ getType }) => {
     if (username !== "" && password !== "" && validateEmail()) {
       if (PrijaviSeOrganizator) {
         if (homeAdress != "null" && homeAdress != "") {
-          fetch("/Test/register", {
+          fetch("/api/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -161,7 +161,7 @@ const LoginM = ({ getType }) => {
         } else {
         }
       } else {
-        fetch("/Test/register", {
+        fetch("/api/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
