@@ -19,6 +19,9 @@ import progi.project.eventovci.user.service.UserService;
 public class LoginController {
 
     @Autowired
+    private UserRepository userRepository;
+    
+    @Autowired
     private UserService userService;
 
     @Autowired
@@ -27,7 +30,18 @@ public class LoginController {
     @Autowired
     private JWTGenerator jwtGenerator;
 
-
+    @PostMapping()
+    public void admins(){
+        User user = new User("admin", "sample@example.com", "pass", "administrator", "Sample Address", false);
+        User user2 = userRepository.findUserByUsername("admin");
+        if(user2 != null) {
+            
+        }
+        else{
+            userRepository.save(user);
+        }
+    }
+    
     @PostMapping()
     public ResponseEntity<String> login(@RequestBody LoginForm loginform) {
 
