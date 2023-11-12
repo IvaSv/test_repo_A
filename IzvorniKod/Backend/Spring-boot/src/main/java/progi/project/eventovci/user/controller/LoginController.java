@@ -8,6 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import progi.project.eventovci.securityconfig.JWTGenerator;
 import progi.project.eventovci.user.controller.dto.LoginForm;
@@ -31,9 +32,12 @@ public class LoginController {
     @Autowired
     private JWTGenerator jwtGenerator;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @PostMapping()
     public void admins(){
-        User user = new User("admin", "sample@example.com", "pass", "administrator", "Sample Address", false);
+        User user = new User("admin", "sample@example.com", passwordEncoder.encode("password"), "administrator", "Sample Address", false);
         User user2 = userRepository.findUserByUsername("admin");
         if(user2 != null) {
             
