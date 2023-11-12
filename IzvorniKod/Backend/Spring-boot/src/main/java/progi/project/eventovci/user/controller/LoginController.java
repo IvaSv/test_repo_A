@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import progi.project.eventovci.securityconfig.JWTGenerator;
 import progi.project.eventovci.user.controller.dto.LoginForm;
 import progi.project.eventovci.user.entity.User;
+import progi.project.eventovci.user.repository.UserRepository;
 import progi.project.eventovci.user.service.UserService;
 
 @RestController
