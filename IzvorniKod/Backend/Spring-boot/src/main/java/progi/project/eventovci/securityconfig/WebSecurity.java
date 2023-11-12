@@ -73,7 +73,8 @@ public class WebSecurity  {
         return http.build();
     }
 
-   @Bean
+    @Override
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
         return authenticationConfiguration.getAuthenticationManager();
     }
